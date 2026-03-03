@@ -1,12 +1,11 @@
 # 🏙️ Chicago 311 Accountability Dashboard
 
-[![Deploy to GitHub Pages](https://github.com/sudhi/chicago-311-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/sudhi/chicago-311-dashboard/actions/workflows/deploy.yml)
+[![Deploy to GitHub Pages](https://github.com/Sudheeshsreenilayam/chicago-311-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/Sudheeshsreenilayam/chicago-311-dashboard/actions/workflows/deploy.yml)
 
 An interactive, live-updating civic tech dashboard correlating **Chicago 311 service response times** with neighborhood **Hardship Indices**. 
 
 This tool aims to expose potential structural bottlenecks in city infrastructure maintenance. It provides citizens, journalists, and urban planners a transparent view into whether essential services (like pothole repair and street light maintenance) are equitably delivered across all 50 Chicago Wards, regardless of a neighborhood's economic status.
 
-![Chicago 311 Accountability Dashboard](dashboard/public/banner.png)
 
 ## 📌 Features
 - **🏙️ Interactive Choropleth Map:** Powered by D3.js, visually explore median response times for 2+ million historical service requests across all 50 wards.
@@ -42,7 +41,7 @@ If you want to fork this project or run the developer environment on your own ma
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/chicago-311-dashboard.git
+   git clone https://github.com/Sudheeshsreenilayam/chicago-311-dashboard.git
    cd chicago-311-dashboard
    ```
 
