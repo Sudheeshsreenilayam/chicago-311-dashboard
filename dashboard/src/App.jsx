@@ -18,9 +18,9 @@ export default function App() {
       try {
         setLoading(true);
         const [geoRes, dataRes, metaRes] = await Promise.all([
-          fetch('/data/ward_boundaries.geojson'),
-          fetch('/data/summary_data.json'),
-          fetch('/data/metadata.json').catch(() => null)
+          fetch(`${import.meta.env.BASE_URL}data/ward_boundaries.geojson`),
+          fetch(`${import.meta.env.BASE_URL}data/summary_data.json`),
+          fetch(`${import.meta.env.BASE_URL}data/metadata.json`).catch(() => null)
         ]);
 
         if (!geoRes.ok || !dataRes.ok) {
