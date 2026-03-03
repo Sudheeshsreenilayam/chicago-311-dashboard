@@ -18,9 +18,9 @@ export default function App() {
       try {
         setLoading(true);
         const [geoRes, dataRes, metaRes] = await Promise.all([
-          fetch(`${import.meta.env.BASE_URL}data/ward_boundaries.geojson`),
-          fetch(`${import.meta.env.BASE_URL}data/summary_data.json`),
-          fetch(`${import.meta.env.BASE_URL}data/metadata.json`).catch(() => null)
+          fetch('https://raw.githubusercontent.com/Sudheeshsreenilayam/chicago-311-dashboard/main/dashboard/public/data/ward_boundaries.geojson'),
+          fetch('https://raw.githubusercontent.com/Sudheeshsreenilayam/chicago-311-dashboard/main/dashboard/public/data/summary_data.json'),
+          fetch('https://raw.githubusercontent.com/Sudheeshsreenilayam/chicago-311-dashboard/main/dashboard/public/data/metadata.json').catch(() => null)
         ]);
 
         if (!geoRes.ok || !dataRes.ok) {
