@@ -1,5 +1,7 @@
 # 🏙️ Chicago 311 Accountability Dashboard
 
+### 🌐 [**>> VIEW THE LIVE DASHBOARD HERE <<**](https://Sudheeshsreenilayam.github.io/chicago-311-dashboard/) 🌐
+
 [![Deploy to GitHub Pages](https://github.com/Sudheeshsreenilayam/chicago-311-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/Sudheeshsreenilayam/chicago-311-dashboard/actions/workflows/deploy.yml)
 
 An interactive, live-updating civic tech dashboard correlating **Chicago 311 service response times** with neighborhood **Hardship Indices**. 
