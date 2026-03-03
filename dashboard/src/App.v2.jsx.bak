@@ -1,0 +1,137 @@
+import React, { useState, useEffect } from 'react';
+import WardMap from './components/WardMap';
+import Leaderboard from './components/Leaderboard';
+import Filter from './components/Filter';
+import { Activity, Map as MapIcon, BarChart2 } from 'lucide-react';
+
+export default function App() {
+  const [geoData, setGeoData] = useState(null);
+  const [wardData, setWardData] = useState(null);
+  const [srTypes, setSrTypes] = useState([]);
+  const [selectedType, setSelectedType] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        const [geoRes, dataRes] = await Promise.all([
+          fetch('/data/ward_boundaries.geojson'),
+          fetch('/data/summary_data.json')
+        ]);
+
+        if (!geoRes.ok || !dataRes.ok) {
+          throw new Error('Failed to load data files');
+        }
+
+        const geoJson = await geoRes.json();
+        const summaryData = await dataRes.json();
+
+        setGeoData(geoJson);
+        setWardData(summaryData);
+
+        // Extract available SR types
+        const types = new Set();
+        summaryData.forEach(w => {
+          Object.keys(w.services).forEach(t => types.add(t));
+        });
+
+        const typeArray = Array.from(types).sort();
+        setSrTypes(typeArray);
+        if (typeArray.length > 0) {
+          setSelectedType(typeArray[0]);
+        }
+      } catch (err) {
+        console.error(err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-zinc-50 font-sans text-zinc-900 pb-20">
+      {/* Header */}
+      <header className="bg-zinc-900 text-white shadow-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center gap-3">
+            <Activity className="w-8 h-8 text-blue-400" />
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight">Chicago 311 Accountability</h1>
+              <p className="text-zinc-400 text-sm mt-1 flex items-center gap-2">
+                <MapIcon className="w-4 h-4" />
+                Correlating City Services with Neighborhood Hardship
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        {loading && (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="mt-4 text-zinc-500 font-medium">Loading Civic Data...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="bg-red-50 text-red-700 p-4 rounded-xl font-medium border border-red-200">
+            {error} (Did you run the Python data script?)
+          </div>
+        )}
+
+        {!loading && !error && (
+          <div className="space-y-6">
+
+            {/* Context/Intro */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-zinc-200">
+              <h2 className="text-lg font-bold text-zinc-800 mb-2">Transparency in City Services</h2>
+              <p className="text-zinc-600 leading-relaxed max-w-4xl">
+                This dashboard tracks the median response times for essential 311 requests across Chicago's 50 wards.
+                By comparing service speeds with the <strong>Hardship Index</strong> (a measure of economic disadvantage),
+                we can identify potential inequities in how infrastructure is maintained across the city.
+              </p>
+            </div>
+
+            {/* Filter */}
+            {srTypes.length > 0 && (
+              <Filter
+                srTypes={srTypes}
+                selectedType={selectedType}
+                onSelect={setSelectedType}
+              />
+            )}
+
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+              {/* Map Column */}
+              <div className="xl:col-span-1 border-zinc-200 rounded-xl">
+                <WardMap
+                  geoData={geoData}
+                  wardData={wardData}
+                  selectedType={selectedType}
+                />
+              </div>
+
+              {/* Leaderboard Column */}
+              <div className="xl:col-span-2 space-y-6">
+                <Leaderboard
+                  wardData={wardData}
+                  selectedType={selectedType}
+                />
+              </div>
+            </div>
+
+          </div>
+        )}
+
+      </main>
+    </div>
+  );
+}

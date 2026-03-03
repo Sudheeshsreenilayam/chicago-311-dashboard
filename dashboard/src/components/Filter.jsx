@@ -1,0 +1,120 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { Download, FileSpreadsheet, FileText, ChevronDown } from 'lucide-react';
+import * as XLSX from 'xlsx';
+
+export default function Filter({ srTypes, selectedType, onSelect, wardData }) {
+    const [isExportOpen, setIsExportOpen] = useState(false);
+    const popoverRef = useRef(null);
+
+    // Close popover if clicked outside
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+                setIsExportOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const handleExport = (scope, format) => {
+        if (!wardData) return;
+        setIsExportOpen(false);
+
+        const typesToExport = scope === 'filtered' ? [selectedType] : srTypes;
+
+        // Prepare Data Array
+        const exportData = wardData.map(ward => {
+            const row = {
+                "Ward": ward.ward,
+                "Hardship Index": ward.hardship_index
+            };
+
+            typesToExport.forEach(type => {
+                row[type] = ward.services[type] !== undefined ? ward.services[type] : null;
+            });
+            return row;
+        });
+
+        // Generate Workbook
+        const worksheet = XLSX.utils.json_to_sheet(exportData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Dashboard Data");
+
+        // Download
+        const fileName = `chicago_311_${scope}_data`;
+        try {
+            if (format === 'csv') {
+                XLSX.writeFile(workbook, `${fileName}.csv`);
+            } else {
+                XLSX.writeFile(workbook, `${fileName}.xlsx`);
+            }
+        } catch (error) {
+            console.error("Export error:", error);
+            alert("There was an error generating the file.");
+        }
+    };
+
+    return (
+        <div className="bg-white p-5 rounded-xl shadow-sm border border-zinc-200 mb-6 flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6">
+            <div className="flex-1">
+                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-3">Service Request Type</h3>
+                <div className="flex flex-wrap gap-2">
+                    {srTypes.map((type) => (
+                        <button
+                            key={type}
+                            onClick={() => onSelect(type)}
+                            className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 border cursor-pointer ${selectedType === type
+                                ? 'bg-blue-50 border-blue-600 text-blue-700 shadow-sm ring-1 ring-blue-600'
+                                : 'bg-white border-zinc-200 text-zinc-600 hover:bg-zinc-50 hover:border-zinc-300 hover:text-zinc-900 shadow-sm'
+                                }`}
+                        >
+                            {type}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            <div className="w-full xl:w-auto pt-4 xl:pt-0 border-t border-zinc-100 xl:border-t-0 pl-0 xl:pl-6 xl:border-l relative" ref={popoverRef}>
+                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-3">Export Data</h3>
+
+                <button
+                    onClick={() => setIsExportOpen(!isExportOpen)}
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 bg-zinc-900 text-white hover:bg-zinc-800 rounded-lg text-sm font-semibold transition cursor-pointer shadow-sm w-full xl:w-48"
+                >
+                    <Download size={16} /> Export <ChevronDown size={14} className={`transition - transform duration - 200 ${isExportOpen ? 'rotate-180' : ''} `} />
+                </button>
+
+                {isExportOpen && (
+                    <div className="absolute top-full mt-2 right-0 w-64 bg-white border border-zinc-200 shadow-xl rounded-xl p-3 z-50 animate-in fade-in zoom-in-95 duration-200">
+                        <div className="mb-2">
+                            <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider px-2">Filtered View ({selectedType})</span>
+                            <div className="mt-1 flex flex-col gap-1">
+                                <button onClick={() => handleExport('filtered', 'csv')} className="flex items-center gap-2 px-3 py-2 hover:bg-zinc-100 rounded-md text-sm text-zinc-700 font-medium transition-colors text-left cursor-pointer">
+                                    <FileText size={16} className="text-blue-500" /> Download  CSV
+                                </button>
+                                <button onClick={() => handleExport('filtered', 'xlsx')} className="flex items-center gap-2 px-3 py-2 hover:bg-zinc-100 rounded-md text-sm text-zinc-700 font-medium transition-colors text-left cursor-pointer">
+                                    <FileSpreadsheet size={16} className="text-green-600" /> Download  Excel (XLSX)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="my-2 border-t border-zinc-100"></div>
+
+                        <div className="mt-2">
+                            <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider px-2">All Service Types</span>
+                            <div className="mt-1 flex flex-col gap-1">
+                                <button onClick={() => handleExport('all', 'csv')} className="flex items-center gap-2 px-3 py-2 hover:bg-zinc-100 rounded-md text-sm text-zinc-700 font-medium transition-colors text-left cursor-pointer">
+                                    <FileText size={16} className="text-blue-500" /> Download  CSV
+                                </button>
+                                <button onClick={() => handleExport('all', 'xlsx')} className="flex items-center gap-2 px-3 py-2 hover:bg-zinc-100 rounded-md text-sm text-zinc-700 font-medium transition-colors text-left cursor-pointer">
+                                    <FileSpreadsheet size={16} className="text-green-600" /> Download  Excel (XLSX)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}

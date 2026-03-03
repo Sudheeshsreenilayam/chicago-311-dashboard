@@ -1,0 +1,85 @@
+import React from 'react';
+import { AlertCircle, AlertTriangle, TrendingUp, TrendingDown } from 'lucide-react';
+
+export default function Leaderboard({ wardData, selectedType }) {
+    if (!wardData || wardData.length === 0) return null;
+
+    // Process data to get times for the selected type
+    const processedData = wardData
+        .map((ward) => ({
+            wardId: ward.ward,
+            hardship: ward.hardship_index,
+            time: ward.services[selectedType]
+        }))
+        .filter((w) => w.time !== undefined && w.time !== null)
+        .sort((a, b) => a.time - b.time);
+
+    if (processedData.length === 0) return (
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-zinc-200">
+            <p className="text-zinc-500">No data available for this request type.</p>
+        </div>
+    );
+
+    const fastest = processedData.slice(0, 10);
+    const slowest = processedData.slice(-10).reverse();
+
+    const getHardshipColor = (score) => {
+        if (score > 60) return "text-red-600 bg-red-50 ring-red-500/10";
+        if (score > 30) return "text-orange-600 bg-orange-50 ring-orange-500/10";
+        return "text-green-600 bg-green-50 ring-green-500/10";
+    };
+
+    const TableHeader = () => (
+        <div className="grid grid-cols-12 gap-2 text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2 px-1">
+            <div className="col-span-2">Ward</div>
+            <div className="col-span-6 text-right">Response Time</div>
+            <div className="col-span-4 text-right">Hardship</div>
+        </div>
+    );
+
+    const Row = ({ item, isFast }) => (
+        <div className="grid grid-cols-12 gap-2 items-center py-3 border-t border-zinc-100 px-1 hover:bg-zinc-50 transition-colors">
+            <div className="col-span-2 font-bold text-zinc-700">{item.wardId}</div>
+            <div className="col-span-6 text-right font-semibold text-zinc-900">
+                {item.time.toFixed(1)} <span className="text-xs text-zinc-400 font-normal">hrs</span>
+            </div>
+            <div className="col-span-4 flex justify-end">
+                <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${getHardshipColor(item.hardship)}`}>
+                    {item.hardship.toFixed(0)}
+                </span>
+            </div>
+        </div>
+    );
+
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Fastest */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-zinc-200">
+                <div className="flex items-center gap-2 mb-6 text-emerald-600">
+                    <TrendingDown className="w-5 h-5" />
+                    <h3 className="font-bold text-lg tracking-tight">Fastest Service</h3>
+                </div>
+                <TableHeader />
+                <div className="flex flex-col">
+                    {fastest.map((item) => (
+                        <Row key={item.wardId} item={item} isFast={true} />
+                    ))}
+                </div>
+            </div>
+
+            {/* Slowest */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-zinc-200">
+                <div className="flex items-center gap-2 mb-6 text-rose-600">
+                    <TrendingUp className="w-5 h-5" />
+                    <h3 className="font-bold text-lg tracking-tight">Slowest Service</h3>
+                </div>
+                <TableHeader />
+                <div className="flex flex-col">
+                    {slowest.map((item) => (
+                        <Row key={item.wardId} item={item} isFast={false} />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}

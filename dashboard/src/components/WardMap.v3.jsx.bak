@@ -1,0 +1,478 @@
+import React, { useRef, useEffect, useState } from 'react';
+import * as d3 from 'd3';
+import { X } from 'lucide-react';
+
+export default function WardMap({ geoData, wardData, selectedType } = {}) {
+    const svgRef = useRef();
+    const wrapperRef = useRef();
+    const [error, setError] = useState(null);
+    const [selectedWardDetail, setSelectedWardDetail] = useState(null);
+    const [userLocation, setUserLocation] = useState(null);
+    const [locating, setLocating] = useState(false);
+
+    // We keep a ref to the currently selected D3 path to clear its styling
+    const selectedPathRef = useRef(null);
+
+    // State to force D3 redraw on container resize
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+    // Track wrapper dimensions dynamically
+    useEffect(() => {
+        if (!wrapperRef.current) return;
+        const resizeObserver = new ResizeObserver((entries) => {
+            if (entries.length > 0) {
+                const { width, height } = entries[0].contentRect;
+                setDimensions({ width, height });
+            }
+        });
+        resizeObserver.observe(wrapperRef.current);
+        return () => resizeObserver.disconnect();
+    }, []);
+
+    useEffect(() => {
+        try {
+            if (!geoData || !wardData || !selectedType) return;
+            if (!wrapperRef.current || !svgRef.current) return;
+            if (dimensions.width === 0) return; // Wait for initial bounds
+
+            const timeByWard = new Map();
+            const hardshipByWard = new Map();
+            let maxTime = 0;
+
+            wardData.forEach((ward) => {
+                if (!ward.services) return;
+                const time = ward.services[selectedType];
+                if (time !== undefined) {
+                    timeByWard.set(ward.ward, time);
+                    hardshipByWard.set(ward.ward, ward.hardship_index);
+                    if (time > maxTime) maxTime = time;
+                }
+            });
+
+            const w = Math.max(dimensions.width, 200);
+            const h = Math.max(dimensions.height, 200);
+            const margin = 20;
+
+            const svg = d3.select(svgRef.current);
+            svg.selectAll("*").remove();
+            selectedPathRef.current = null; // reset on re-render
+
+            if (!geoData.type || geoData.type !== 'FeatureCollection') {
+                console.warn('geoData is not a strict FeatureCollection');
+            }
+
+            const projection = d3.geoMercator().fitSize([w - margin * 2 - 100, h - margin * 2], geoData);
+            const pathGenerator = d3.geoPath().projection(projection);
+
+            const colorScale = d3.scaleSequential(d3.interpolateYlOrRd).domain([0, maxTime || 1]);
+
+            // Create a dedicated zoom group for paths and labels so legend stays fixed
+            const zoomG = svg.append("g").attr("class", "zoom-group");
+
+            let tooltip = d3.select("#map-tooltip");
+            if (tooltip.empty()) {
+                tooltip = d3.select("body").append("div")
+                    .attr("id", "map-tooltip")
+                    .attr("class", "absolute hidden bg-zinc-900 text-white p-3 rounded-lg text-sm shadow-xl z-50 pointer-events-none")
+                    .style("opacity", 0);
+            }
+
+            const features = geoData.features || [];
+
+            // Draw map paths
+            zoomG.selectAll("path")
+                .data(features)
+                .enter()
+                .append("path")
+                .attr("d", pathGenerator)
+                .attr("fill", (d) => {
+                    const wardNum = d.properties?.ward;
+                    const time = timeByWard.get(wardNum);
+                    return time !== undefined ? colorScale(time) : "#f4f4f5";
+                })
+                .attr("stroke", "#e4e4e7")
+                .attr("stroke-width", 1)
+                .attr("class", "transition-all duration-200 cursor-pointer outline-none drop-shadow-sm")
+                .on("mouseover", function (event, d) {
+                    // Highlight on hover if not selected
+                    if (selectedPathRef.current !== this) {
+                        d3.select(this)
+                            .attr("stroke", "#52525b")
+                            .attr("stroke-width", 2)
+                            .style("filter", "drop-shadow(0px 4px 6px rgba(0,0,0,0.1))");
+                    }
+
+                    const wardNum = d.properties?.ward;
+                    const time = timeByWard.get(wardNum);
+                    const hardship = hardshipByWard.get(wardNum);
+
+                    tooltip.transition().duration(200).style("opacity", 1);
+                    tooltip.html(`
+            <div class="font-bold mb-1 text-base">Ward ${wardNum || 'Unknown'}</div>
+            <div class="text-xs text-zinc-300">Click for details</div>
+          `)
+                        .style("left", (event.pageX + 15) + "px")
+                        .style("top", (event.pageY - 28) + "px")
+                        .classed("hidden", false);
+                })
+                .on("mouseout", function () {
+                    // Revert hover if not selected
+                    if (selectedPathRef.current !== this) {
+                        d3.select(this)
+                            .attr("stroke", "#e4e4e7")
+                            .attr("stroke-width", 1)
+                            .style("filter", "none");
+                    }
+                    tooltip.transition().duration(500).style("opacity", 0).on('end', () => tooltip.classed('hidden', true));
+                })
+                .on("click", function (event, d) {
+                    const wardNum = d.properties?.ward;
+                    const time = timeByWard.get(wardNum);
+                    const hardship = hardshipByWard.get(wardNum);
+
+                    // Clear previous selection visually
+                    if (selectedPathRef.current && selectedPathRef.current !== this) {
+                        d3.select(selectedPathRef.current)
+                            .attr("stroke", "#e4e4e7")
+                            .attr("stroke-width", 1)
+                            .style("filter", "none");
+                    }
+
+                    // Set new selection visually
+                    d3.select(this)
+                        .attr("stroke", "#0ea5e9") // Highlight with blue
+                        .attr("stroke-width", 3)
+                        .style("filter", "drop-shadow(0px 8px 12px rgba(14, 165, 233, 0.3))"); // Blue glow pop-out
+
+                    selectedPathRef.current = this;
+
+                    // Update React state for details panel
+                    setSelectedWardDetail({
+                        wardNum,
+                        time: time !== undefined ? time : null,
+                        hardship: hardship !== undefined ? hardship : null
+                    });
+                });
+
+            // --- Draw User Location ---
+            if (userLocation) {
+                const [userX, userY] = projection(userLocation);
+                const userG = zoomG.append("g").attr("class", "user-location")
+                    .attr("transform", `translate(${userX}, ${userY})`);
+
+                // Pulsing outer feature
+                userG.append("circle")
+                    .attr("r", 9)
+                    .attr("fill", "#3b82f6")
+                    .attr("opacity", 0.4)
+                    .style("animation", "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"); // basic pulse
+
+                // Inner solid dot
+                userG.append("circle")
+                    .attr("r", 4)
+                    .attr("fill", "#2563eb")
+                    .attr("stroke", "#ffffff")
+                    .attr("stroke-width", 2);
+            }
+
+            // --- Draw Neighborhood Labels ---
+            const neighborhoods = [
+                // Tier 1 (Always visible)
+                { name: "The Loop", coords: [-87.6298, 41.8781], tier: 1 },
+                { name: "O'Hare", coords: [-87.9073, 41.9742], tier: 1 },
+                { name: "Wrigleyville", coords: [-87.6553, 41.9484], tier: 1 },
+                { name: "Hyde Park", coords: [-87.5987, 41.7943], tier: 1 },
+                { name: "Logan Square", coords: [-87.7085, 41.9283], tier: 1 },
+                { name: "South Shore", coords: [-87.5683, 41.7606], tier: 1 },
+                { name: "Bronzeville", coords: [-87.6173, 41.8251], tier: 1 },
+                { name: "Chinatown", coords: [-87.6324, 41.8510], tier: 1 },
+                { name: "Englewood", coords: [-87.6405, 41.7753], tier: 1 },
+                { name: "Austin", coords: [-87.7651, 41.8893], tier: 1 },
+
+                // Tier 2 (Visible at > 1.8x zoom)
+                { name: "Lincoln Park", coords: [-87.6495, 41.9214], tier: 2 },
+                { name: "Lake View", coords: [-87.6614, 41.9406], tier: 2 },
+                { name: "West Loop", coords: [-87.6521, 41.8825], tier: 2 },
+                { name: "Wicker Park", coords: [-87.6775, 41.9088], tier: 2 },
+                { name: "Pilsen", coords: [-87.6620, 41.8550], tier: 2 },
+                { name: "Avondale", coords: [-87.7027, 41.9415], tier: 2 },
+                { name: "Humboldt Park", coords: [-87.7226, 41.9015], tier: 2 },
+                { name: "Edgewater", coords: [-87.6617, 41.9866], tier: 2 },
+                { name: "Rogers Park", coords: [-87.6685, 42.0094], tier: 2 },
+                { name: "Garfield Park", coords: [-87.7126, 41.8810], tier: 2 },
+
+                // Tier 3 (Visible at > 3.5x zoom)
+                { name: "Pullman", coords: [-87.6062, 41.6966], tier: 3 },
+                { name: "Midway", coords: [-87.7522, 41.7868], tier: 3 },
+                { name: "Chatham", coords: [-87.6146, 41.7408], tier: 3 },
+                { name: "Albany Park", coords: [-87.7180, 41.9686], tier: 3 },
+                { name: "Irving Park", coords: [-87.7282, 41.9535], tier: 3 },
+                { name: "Bridgeport", coords: [-87.6473, 41.8364], tier: 3 },
+                { name: "Roseland", coords: [-87.6212, 41.7107], tier: 3 },
+                { name: "Beverly", coords: [-87.6766, 41.7171], tier: 3 },
+                { name: "Hegewisch", coords: [-87.5505, 41.6555], tier: 3 },
+                { name: "Portage Park", coords: [-87.7656, 41.9536], tier: 3 },
+                { name: "Little Village", coords: [-87.7129, 41.8458], tier: 3 }
+            ];
+
+            const labelG = zoomG.append("g");
+
+            labelG.selectAll("g.neighborhood")
+                .data(neighborhoods)
+                .enter()
+                .append("g")
+                .attr("class", d => `neighborhood pointer-events-none tier-${d.tier}`)
+                .attr("transform", d => {
+                    const [x, y] = projection(d.coords);
+                    return `translate(${x}, ${y})`;
+                })
+                .each(function (d) {
+                    const group = d3.select(this);
+                    // Location Dot
+                    group.append("circle")
+                        .attr("r", 3)
+                        .attr("fill", "#18181b") // zinc-900
+                        .attr("stroke", "#ffffff")
+                        .attr("stroke-width", 1.5);
+
+                    // Text halo for readability
+                    group.append("text")
+                        .attr("class", "label-halo")
+                        .attr("x", 6)
+                        .attr("y", 4)
+                        .text(d.name)
+                        .style("font-size", "10px")
+                        .style("font-weight", "700")
+                        .style("fill", "none")
+                        .style("stroke", "#ffffff")
+                        .style("stroke-width", 2)
+                        .style("stroke-linejoin", "round");
+
+                    // Main text
+                    group.append("text")
+                        .attr("class", "label-text")
+                        .attr("x", 6)
+                        .attr("y", 4)
+                        .text(d.name)
+                        .style("font-size", "10px")
+                        .style("font-weight", "700")
+                        .style("fill", "#18181b"); // zinc-900
+
+                    // Initialize visibility based on tier
+                    if (d.tier > 1) {
+                        group.style("opacity", 0);
+                    }
+                });
+
+            // --- Setup Zoom Behavior ---
+            const handleZoom = (e) => {
+                zoomG.attr("transform", e.transform);
+
+                // Semantic zooming handles label visibility based on scale (k)
+                const k = e.transform.k;
+
+                // Maintain absolute visual size and spacing while zooming natively
+                labelG.selectAll("text.label-halo").style("font-size", `${10 / k}px`).style("stroke-width", `${2 / k}px`).attr("x", 6 / k).attr("y", 4 / k);
+                labelG.selectAll("text.label-text").style("font-size", `${10 / k}px`).attr("x", 6 / k).attr("y", 4 / k);
+                labelG.selectAll("circle").attr("r", 3 / k).attr("stroke-width", 1.5 / k);
+
+                // Resize user dot so it stays proportional
+                zoomG.selectAll(".user-location circle").attr("transform", `scale(${1 / k})`);
+
+                zoomG.selectAll("path").attr("stroke-width", 1 / k);
+                if (selectedPathRef.current) {
+                    d3.select(selectedPathRef.current).attr("stroke-width", 3 / k);
+                }
+
+                labelG.selectAll("g.neighborhood").style("opacity", function (d) {
+                    if (d.tier === 1) return 1;
+                    if (d.tier === 2) return k > 1.8 ? Math.min(1, (k - 1.8) * 2) : 0;
+                    if (d.tier === 3) return k > 3.5 ? Math.min(1, (k - 3.5) * 2) : 0;
+                    return 0;
+                });
+            };
+
+            const zoom = d3.zoom()
+                .scaleExtent([1, 8]) // Max zoom 8x
+                .translateExtent([[0, 0], [w, h]]) // Confine panning to SVG boundary
+                .on("zoom", handleZoom);
+
+            svg.call(zoom);
+
+            // --- Draw Legend ---
+            const legendWidth = 200;
+            const legendHeight = 10;
+
+            const legendG = svg.append("g")
+                .attr("transform", `translate(${w - legendWidth - 40}, ${h - 50})`);
+
+            // Define gradient
+            const defs = svg.append("defs");
+            const linearGradient = defs.append("linearGradient")
+                .attr("id", "linear-gradient")
+                .attr("x1", "0%").attr("y1", "0%")
+                .attr("x2", "100%").attr("y2", "0%");
+
+            // Add stops to gradient based on color scale
+            const numStops = 10;
+            const range = d3.range(0, 1.1, 1 / numStops);
+            linearGradient.selectAll("stop")
+                .data(range)
+                .enter().append("stop")
+                .attr("offset", d => `${d * 100}%`)
+                .attr("stop-color", d => colorScale(d * maxTime));
+
+            // Draw the rectangle and fill with gradient
+            legendG.append("rect")
+                .attr("width", legendWidth)
+                .attr("height", legendHeight)
+                .style("fill", "url(#linear-gradient)")
+                .style("stroke", "#e4e4e7") // zin-200 boundary
+
+            // Add a scale/axis for the legend
+            // Ensure maxTime is > 0 for domain scale
+            const effectiveMaxTime = maxTime > 0 ? maxTime : 1;
+            const legendScale = d3.scaleLinear()
+                .domain([0, effectiveMaxTime])
+                .range([0, legendWidth]);
+
+            const legendAxis = d3.axisBottom(legendScale)
+                .ticks(4)
+                .tickFormat(d => {
+                    if (d === 0) return "0h";
+                    if (d < 0.1) return "<0.1h";
+                    if (d >= 100) return `${Math.round(d)}h`;
+                    return `${d.toFixed(1)}h`;
+                })
+                .tickSize(4);
+
+            // Append axis to legend group
+            legendG.append("g")
+                .attr("transform", `translate(0, ${legendHeight})`)
+                .call(legendAxis)
+                .select(".domain").remove(); // remove the main axis line
+
+            // Add legend title
+            legendG.append("text")
+                .attr("x", 0)
+                .attr("y", -8)
+                .style("font-size", "11px")
+                .style("font-weight", "600")
+                .style("fill", "#52525b") // zinc-600
+                .text("Median Response Time");
+
+        } catch (err) {
+            console.error("Map D3 Error:", err);
+            setError(err.message);
+        }
+    }, [geoData, wardData, selectedType, userLocation, dimensions]);
+
+    const handleLocateMe = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+            return;
+        }
+        setLocating(true);
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setLocating(false);
+                setUserLocation([position.coords.longitude, position.coords.latitude]);
+            },
+            (err) => {
+                setLocating(false);
+                alert("Could not determine your location. Please check browser permissions.");
+            }
+        );
+    };
+
+    // Handle clearing selection from the panel
+    const handleClearSelection = () => {
+        setSelectedWardDetail(null);
+        if (selectedPathRef.current) {
+            d3.select(selectedPathRef.current)
+                .attr("stroke", "#e4e4e7")
+                .attr("stroke-width", 1);
+            selectedPathRef.current = null;
+        }
+    };
+
+    if (error) {
+        return <div className="p-4 text-red-600 bg-red-50 rounded-xl border border-red-200">Map Rendering Error: {error}</div>;
+    }
+
+    return (
+        <div className="w-full bg-white rounded-xl shadow-sm border border-zinc-200 overflow-hidden flex flex-col">
+            {/* Map Header - Statically positioned above the map */}
+            <div className="w-full px-6 py-5 bg-zinc-50 border-b border-zinc-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h3 className="text-xl font-bold text-zinc-800 tracking-tight">Chicago Wards</h3>
+                    <p className="text-sm font-medium text-zinc-500">Interactive Map</p>
+
+                    <button
+                        onClick={handleLocateMe}
+                        disabled={locating}
+                        className="mt-3 inline-flex items-center justify-center gap-1.5 text-xs font-semibold bg-white text-zinc-700 px-4 py-2 rounded-lg border border-zinc-200 hover:bg-zinc-100 hover:text-blue-600 transition-colors shadow-sm cursor-pointer"
+                    >
+                        {locating ? "Locating..." : "📍 Locate Me"}
+                    </button>
+                </div>
+
+                <div className="flex-1 max-w-2xl bg-white p-4 rounded-xl border border-zinc-200 shadow-sm flex flex-col sm:flex-row gap-4 text-xs text-zinc-600 leading-relaxed">
+                    <div className="flex-1">
+                        <strong className="block text-zinc-800 font-bold mb-1 uppercase tracking-wider text-[10px]">Response Time</strong>
+                        The median time (in hours) to close a service request.
+                    </div>
+                    <div className="hidden sm:block w-px bg-zinc-100"></div>
+                    <div className="flex-1">
+                        <strong className="block text-zinc-800 font-bold mb-1 uppercase tracking-wider text-[10px]">Hardship Index</strong>
+                        A score (1-100) combining poverty, unemployment, and housing metrics. Higher = harder.
+                    </div>
+                </div>
+            </div>
+
+            {/* Map Canvas Container */}
+            <div ref={wrapperRef} className="w-full h-[600px] relative bg-white">
+                <svg ref={svgRef} className="w-full h-full focus:outline-none" />
+
+                {/* Selected Ward Details PanelOverlay */}
+                {selectedWardDetail && (
+                    <div className="absolute top-4 right-4 z-20 bg-white shadow-xl rounded-xl border border-blue-200 w-64 animate-in fade-in slide-in-from-right-4 duration-300">
+
+                        <div className="flex justify-between items-center p-4 border-b border-zinc-100 bg-blue-50/50 rounded-t-xl">
+                            <h4 className="font-bold text-lg text-blue-900">
+                                Ward {selectedWardDetail.wardNum}
+                            </h4>
+                            <button onClick={handleClearSelection} className="p-1 hover:bg-blue-100 rounded-full text-blue-600 transition-colors cursor-pointer">
+                                <X size={18} />
+                            </button>
+                        </div>
+
+                        <div className="p-4 space-y-4">
+                            <p className="text-xs text-zinc-500 italic">
+                                Note: Chicago Wards are designated by number only.
+                            </p>
+
+                            <div>
+                                <span className="block text-xs uppercase text-zinc-500 tracking-wider font-semibold mb-1">
+                                    Response Time ({selectedType})
+                                </span>
+                                <span className="text-2xl font-black text-zinc-800">
+                                    {selectedWardDetail.time !== null ? selectedWardDetail.time.toFixed(1) : 'N/A'} <span className="text-sm font-medium text-zinc-500">hrs</span>
+                                </span>
+                            </div>
+
+                            <div className="pt-2 border-t border-zinc-100">
+                                <span className="block text-xs uppercase text-zinc-500 tracking-wider font-semibold mb-1">
+                                    Hardship Index
+                                </span>
+                                <span className="text-lg font-bold text-zinc-700">
+                                    {selectedWardDetail.hardship !== null ? selectedWardDetail.hardship.toFixed(0) : 'N/A'}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}

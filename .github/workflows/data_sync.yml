@@ -1,0 +1,25 @@
+name: Daily Chicago 311 Sync
+on:
+  schedule:
+    - cron: "0 5 * * *" # Every day at 5 AM UTC
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+      - name: Fetch Data
+        run: python scripts/fetch_data.py
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add dashboard/public/data/
+          git commit -m "Auto-update Chicago 311 data" || exit 0
+          git push
