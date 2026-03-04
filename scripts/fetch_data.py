@@ -90,7 +90,7 @@ def process_data():
     with open('dashboard/public/data/summary_data.json', 'w') as f:
         json.dump(final_data, f, indent=2)
         
-    last_updated = datetime.datetime.now().strftime('%B %d, %Y at %I:%M %p')
+    last_updated = datetime.datetime.now(datetime.timezone.utc).isoformat()
     metadata = {
         "last_updated": last_updated,
         "timeline_start": min_date,

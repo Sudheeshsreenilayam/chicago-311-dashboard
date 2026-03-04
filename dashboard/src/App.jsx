@@ -94,7 +94,16 @@ export default function App() {
                   </span>
                   Live Data Sync
                 </div>
-                <div className="text-zinc-300 mt-0.5"><strong className="text-zinc-500 font-semibold mr-1">Updated:</strong> {metadata.last_updated}</div>
+                <div className="text-zinc-300 mt-0.5">
+                  <strong className="text-zinc-500 font-semibold mr-1">Updated:</strong>
+                  {(() => {
+                    if (!metadata.last_updated) return "Unknown";
+                    const parseableStr = metadata.last_updated.replace(" at ", " ");
+                    const d = new Date(parseableStr);
+                    if (isNaN(d)) return metadata.last_updated;
+                    return d.toLocaleString(undefined, { year: 'numeric', month: 'long', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+                  })()}
+                </div>
                 <div><strong className="text-zinc-500 font-semibold mr-1">Timeline:</strong> {metadata.timeline_start} — {metadata.timeline_end}</div>
               </div>
             )}
