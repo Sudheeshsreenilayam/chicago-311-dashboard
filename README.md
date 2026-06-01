@@ -68,5 +68,15 @@ All data driving this application is sourced directly from the **City of Chicago
 *   [Selected socioeconomic indicators in Chicago, 2008 – 2012](https://data.cityofchicago.org/Health-Human-Services/Census-Data-Selected-socioeconomic-indicators-in-C/kn9c-c2s2)
 *   [Boundaries - Wards (2015-2023)](https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Wards-2015-2023-/sp34-6z76)
 
+## 🛡️ Security & Integrity
+
+This project is audited and designed with security best practices to prevent credential exposure and maintain workflow integrity:
+
+1. **No Sensitive Keys/Credentials**: All data is pulled from public, open-access endpoints. There are no backend database credentials, private keys, or API tokens stored in the repository.
+2. **Environment Protection**: The `.gitignore` is properly configured (in UTF-8) to ignore environment files (`.env`), cache folders, local configuration settings, and temporary scratch files.
+3. **CI/CD Pipeline Hardening**: The GitHub Actions runner handles updates with explicit, limited privileges (`permissions: contents: write` only for publishing data updates, and `pages: write` for deploying the static frontend).
+4. **No Legacy Backups**: Legacy backup files (`*.bak`) are removed from git tracking to prevent stale configuration/logic exposure.
+
 ---
 *Built as an open-source civic technology exploration.*
+
