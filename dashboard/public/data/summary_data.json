@@ -4,11 +4,11 @@
     "hardship_index": 2.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 360.15944444444443,
-      "Garbage Cart Maintenance": 833.5341666666667,
-      "Graffiti Removal Request": 15.081388888888888,
-      "Pothole in Street Complaint": 576.6920833333334,
-      "Rodent Baiting/Rat Complaint": 172.01666666666668,
+      "Abandoned Vehicle Complaint": 359.5463888888889,
+      "Garbage Cart Maintenance": 834.4433333333334,
+      "Graffiti Removal Request": 15.133055555555554,
+      "Pothole in Street Complaint": 577.0266666666666,
+      "Rodent Baiting/Rat Complaint": 184.2711111111111,
       "Tree Emergency": 20.238888888888887
     }
   },
@@ -17,11 +17,11 @@
     "hardship_index": 20.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 347.18666666666667,
-      "Garbage Cart Maintenance": 712.1195833333334,
-      "Graffiti Removal Request": 19.5625,
-      "Pothole in Street Complaint": 100.13527777777777,
-      "Rodent Baiting/Rat Complaint": 147.45652777777775,
+      "Abandoned Vehicle Complaint": 345.11944444444447,
+      "Garbage Cart Maintenance": 712.3908333333334,
+      "Graffiti Removal Request": 19.549722222222222,
+      "Pothole in Street Complaint": 99.84833333333333,
+      "Rodent Baiting/Rat Complaint": 156.6497222222222,
       "Tree Emergency": 18.540277777777778
     }
   },
@@ -30,11 +30,11 @@
     "hardship_index": 22.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 182.55347222222224,
-      "Garbage Cart Maintenance": 714.7094444444444,
+      "Abandoned Vehicle Complaint": 182.27944444444444,
+      "Garbage Cart Maintenance": 719.3954166666667,
       "Graffiti Removal Request": 0.004166666666666667,
-      "Pothole in Street Complaint": 169.13638888888892,
-      "Rodent Baiting/Rat Complaint": 90.79777777777778,
+      "Pothole in Street Complaint": 169.73708333333335,
+      "Rodent Baiting/Rat Complaint": 91.99555555555555,
       "Tree Emergency": 26.481944444444444
     }
   },
@@ -43,12 +43,12 @@
     "hardship_index": 24.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 191.0025,
-      "Garbage Cart Maintenance": 720.0326388888889,
-      "Graffiti Removal Request": 14.185555555555556,
-      "Pothole in Street Complaint": 182.6822222222222,
-      "Rodent Baiting/Rat Complaint": 116.20777777777778,
-      "Tree Emergency": 68.45319444444445
+      "Abandoned Vehicle Complaint": 191.33527777777778,
+      "Garbage Cart Maintenance": 732.7606944444444,
+      "Graffiti Removal Request": 14.20888888888889,
+      "Pothole in Street Complaint": 183.82069444444443,
+      "Rodent Baiting/Rat Complaint": 116.70194444444445,
+      "Tree Emergency": 68.48055555555555
     }
   },
   {
@@ -56,11 +56,11 @@
     "hardship_index": 26.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 171.05430555555557,
-      "Garbage Cart Maintenance": 718.2980555555556,
+      "Abandoned Vehicle Complaint": 170.17597222222224,
+      "Garbage Cart Maintenance": 725.4954166666666,
       "Graffiti Removal Request": 17.180833333333332,
       "Pothole in Street Complaint": 259.62888888888887,
-      "Rodent Baiting/Rat Complaint": 71.0923611111111,
+      "Rodent Baiting/Rat Complaint": 71.68194444444444,
       "Tree Emergency": 71.96444444444444
     }
   },
@@ -71,11 +71,11 @@
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 136.71375,
       "Aircraft Noise Complaint": 0.0002777777777777778,
-      "Garbage Cart Maintenance": 866.7684722222223,
-      "Graffiti Removal Request": 11.219722222222222,
-      "Pothole in Street Complaint": 456.0975,
+      "Garbage Cart Maintenance": 874.5086111111111,
+      "Graffiti Removal Request": 11.239722222222222,
+      "Pothole in Street Complaint": 477.85027777777776,
       "Rodent Baiting/Rat Complaint": 114.5613888888889,
-      "Tree Emergency": 72.15972222222223
+      "Tree Emergency": 72.31375
     }
   },
   {
@@ -83,9 +83,9 @@
     "hardship_index": 30.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 134.13430555555556,
-      "Garbage Cart Maintenance": 738.5272222222222,
-      "Graffiti Removal Request": 13.926111111111112,
+      "Abandoned Vehicle Complaint": 132.96569444444447,
+      "Garbage Cart Maintenance": 742.6802777777777,
+      "Graffiti Removal Request": 13.950833333333334,
       "Pothole in Street Complaint": 182.8076388888889,
       "Rodent Baiting/Rat Complaint": 168.41055555555556,
       "Tree Emergency": 54.53861111111111
@@ -96,12 +96,12 @@
     "hardship_index": 32.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 113.08847222222222,
-      "Garbage Cart Maintenance": 716.4616666666667,
-      "Graffiti Removal Request": 15.508888888888889,
-      "Pothole in Street Complaint": 205.53236111111113,
-      "Rodent Baiting/Rat Complaint": 114.22583333333333,
-      "Tree Emergency": 27.893055555555556
+      "Abandoned Vehicle Complaint": 112.91847222222222,
+      "Garbage Cart Maintenance": 719.8143055555556,
+      "Graffiti Removal Request": 15.515277777777778,
+      "Pothole in Street Complaint": 206.62916666666666,
+      "Rodent Baiting/Rat Complaint": 114.66569444444444,
+      "Tree Emergency": 28.01388888888889
     }
   },
   {
@@ -109,8 +109,8 @@
     "hardship_index": 34.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 264.24861111111113,
-      "Garbage Cart Maintenance": 713.1211111111111,
+      "Abandoned Vehicle Complaint": 265.4213888888889,
+      "Garbage Cart Maintenance": 717.4080555555556,
       "Graffiti Removal Request": 0.0038888888888888888,
       "Pothole in Street Complaint": 92.99194444444444,
       "Rodent Baiting/Rat Complaint": 90.53805555555556,
@@ -122,12 +122,12 @@
     "hardship_index": 36.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 285.1188888888889,
+      "Abandoned Vehicle Complaint": 284.8209722222222,
       "Aircraft Noise Complaint": 0.0,
-      "Garbage Cart Maintenance": 697.2616666666667,
-      "Graffiti Removal Request": 17.2025,
+      "Garbage Cart Maintenance": 712.4247222222223,
+      "Graffiti Removal Request": 17.106805555555557,
       "Pothole in Street Complaint": 166.71222222222224,
-      "Rodent Baiting/Rat Complaint": 119.46986111111111,
+      "Rodent Baiting/Rat Complaint": 119.47833333333334,
       "Tree Emergency": 50.97958333333334
     }
   },
@@ -138,9 +138,9 @@
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 331.2297222222222,
       "Aircraft Noise Complaint": 0.0,
-      "Garbage Cart Maintenance": 744.6530555555555,
+      "Garbage Cart Maintenance": 761.8397222222222,
       "Graffiti Removal Request": 0.002777777777777778,
-      "Pothole in Street Complaint": 99.94194444444445,
+      "Pothole in Street Complaint": 100.33458333333334,
       "Rodent Baiting/Rat Complaint": 76.03111111111112,
       "Tree Emergency": 30.234722222222224
     }
@@ -152,9 +152,9 @@
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 405.6377777777778,
       "Garbage Cart Maintenance": 659.1036111111111,
-      "Graffiti Removal Request": 17.465,
-      "Pothole in Street Complaint": 188.4411111111111,
-      "Rodent Baiting/Rat Complaint": 74.74638888888889,
+      "Graffiti Removal Request": 17.746388888888887,
+      "Pothole in Street Complaint": 188.87652777777777,
+      "Rodent Baiting/Rat Complaint": 74.45513888888888,
       "Tree Emergency": 25.314305555555556
     }
   },
@@ -163,12 +163,12 @@
     "hardship_index": 40.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 319.2051388888889,
-      "Garbage Cart Maintenance": 667.7420833333333,
-      "Graffiti Removal Request": 11.915833333333333,
-      "Pothole in Street Complaint": 265.75166666666667,
-      "Rodent Baiting/Rat Complaint": 69.30777777777777,
-      "Tree Emergency": 51.90222222222222
+      "Abandoned Vehicle Complaint": 317.03041666666667,
+      "Garbage Cart Maintenance": 668.5236111111111,
+      "Graffiti Removal Request": 11.914027777777779,
+      "Pothole in Street Complaint": 265.8877777777777,
+      "Rodent Baiting/Rat Complaint": 69.68305555555555,
+      "Tree Emergency": 51.70152777777778
     }
   },
   {
@@ -176,12 +176,12 @@
     "hardship_index": 42.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 313.09375,
-      "Garbage Cart Maintenance": 666.8386111111112,
-      "Graffiti Removal Request": 17.530972222222225,
-      "Pothole in Street Complaint": 99.84833333333333,
-      "Rodent Baiting/Rat Complaint": 90.82638888888889,
-      "Tree Emergency": 49.314166666666665
+      "Abandoned Vehicle Complaint": 312.6377777777778,
+      "Garbage Cart Maintenance": 675.4888888888889,
+      "Graffiti Removal Request": 17.305555555555557,
+      "Pothole in Street Complaint": 115.58305555555556,
+      "Rodent Baiting/Rat Complaint": 92.61694444444444,
+      "Tree Emergency": 49.32083333333333
     }
   },
   {
@@ -189,12 +189,12 @@
     "hardship_index": 44.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 220.9765277777778,
+      "Abandoned Vehicle Complaint": 221.43597222222223,
       "Garbage Cart Maintenance": 835.6902777777777,
-      "Graffiti Removal Request": 17.067638888888887,
-      "Pothole in Street Complaint": 232.9127777777778,
+      "Graffiti Removal Request": 17.02,
+      "Pothole in Street Complaint": 237.82861111111112,
       "Rodent Baiting/Rat Complaint": 120.91513888888889,
-      "Tree Emergency": 67.37916666666666
+      "Tree Emergency": 67.2826388888889
     }
   },
   {
@@ -202,12 +202,12 @@
     "hardship_index": 46.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 142.45194444444445,
+      "Abandoned Vehicle Complaint": 141.79486111111112,
       "Aircraft Noise Complaint": 0.0002777777777777778,
-      "Garbage Cart Maintenance": 666.9230555555556,
-      "Graffiti Removal Request": 13.83763888888889,
-      "Pothole in Street Complaint": 268.75097222222223,
-      "Rodent Baiting/Rat Complaint": 117.15194444444444,
+      "Garbage Cart Maintenance": 666.975,
+      "Graffiti Removal Request": 13.819861111111111,
+      "Pothole in Street Complaint": 268.79333333333335,
+      "Rodent Baiting/Rat Complaint": 116.84777777777778,
       "Tree Emergency": 63.02166666666667
     }
   },
@@ -216,11 +216,11 @@
     "hardship_index": 48.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 265.70763888888894,
-      "Garbage Cart Maintenance": 665.7606944444444,
-      "Graffiti Removal Request": 11.592777777777778,
+      "Abandoned Vehicle Complaint": 266.32708333333335,
+      "Garbage Cart Maintenance": 667.7658333333334,
+      "Graffiti Removal Request": 11.605833333333333,
       "Pothole in Street Complaint": 980.31,
-      "Rodent Baiting/Rat Complaint": 96.83694444444444,
+      "Rodent Baiting/Rat Complaint": 97.56583333333333,
       "Tree Emergency": 23.170833333333334
     }
   },
@@ -229,12 +229,12 @@
     "hardship_index": 50.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 362.3986111111111,
-      "Garbage Cart Maintenance": 669.4765277777778,
-      "Graffiti Removal Request": 7.533055555555555,
-      "Pothole in Street Complaint": 591.7219444444445,
-      "Rodent Baiting/Rat Complaint": 99.80805555555555,
-      "Tree Emergency": 30.44611111111111
+      "Abandoned Vehicle Complaint": 361.7011111111111,
+      "Garbage Cart Maintenance": 669.9254166666667,
+      "Graffiti Removal Request": 8.302222222222222,
+      "Pothole in Street Complaint": 600.6870833333332,
+      "Rodent Baiting/Rat Complaint": 102.92833333333333,
+      "Tree Emergency": 30.43027777777778
     }
   },
   {
@@ -242,12 +242,12 @@
     "hardship_index": 52.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 324.3677777777778,
-      "Garbage Cart Maintenance": 758.2986111111111,
+      "Abandoned Vehicle Complaint": 324.1286111111111,
+      "Garbage Cart Maintenance": 760.4520833333333,
       "Graffiti Removal Request": 0.003611111111111111,
-      "Pothole in Street Complaint": 685.7522222222223,
-      "Rodent Baiting/Rat Complaint": 138.79055555555556,
-      "Tree Emergency": 26.659444444444446
+      "Pothole in Street Complaint": 745.3925,
+      "Rodent Baiting/Rat Complaint": 138.97791666666666,
+      "Tree Emergency": 26.658055555555556
     }
   },
   {
@@ -255,12 +255,12 @@
     "hardship_index": 54.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 215.4086111111111,
-      "Garbage Cart Maintenance": 788.0388888888889,
+      "Abandoned Vehicle Complaint": 215.4375,
+      "Garbage Cart Maintenance": 789.1197222222222,
       "Graffiti Removal Request": 0.004166666666666667,
-      "Pothole in Street Complaint": 533.0266666666666,
-      "Rodent Baiting/Rat Complaint": 118.51611111111112,
-      "Tree Emergency": 23.434305555555554
+      "Pothole in Street Complaint": 536.4594444444444,
+      "Rodent Baiting/Rat Complaint": 117.94,
+      "Tree Emergency": 23.551388888888887
     }
   },
   {
@@ -268,13 +268,13 @@
     "hardship_index": 56.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 258.07416666666666,
+      "Abandoned Vehicle Complaint": 262.1383333333333,
       "Aircraft Noise Complaint": 0.0001388888888888889,
-      "Garbage Cart Maintenance": 737.0844444444444,
-      "Graffiti Removal Request": 0.01625,
-      "Pothole in Street Complaint": 527.9947222222222,
-      "Rodent Baiting/Rat Complaint": 92.01916666666668,
-      "Tree Emergency": 20.12486111111111
+      "Garbage Cart Maintenance": 741.0426388888889,
+      "Graffiti Removal Request": 0.042083333333333334,
+      "Pothole in Street Complaint": 532.2319444444445,
+      "Rodent Baiting/Rat Complaint": 93.49972222222222,
+      "Tree Emergency": 20.15361111111111
     }
   },
   {
@@ -282,11 +282,11 @@
     "hardship_index": 58.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 343.91291666666666,
-      "Garbage Cart Maintenance": 667.2988888888889,
-      "Graffiti Removal Request": 3.545,
+      "Abandoned Vehicle Complaint": 343.0411111111111,
+      "Garbage Cart Maintenance": 670.5283333333333,
+      "Graffiti Removal Request": 3.549722222222222,
       "Pothole in Street Complaint": 539.94,
-      "Rodent Baiting/Rat Complaint": 88.85527777777779,
+      "Rodent Baiting/Rat Complaint": 88.44,
       "Tree Emergency": 26.393055555555556
     }
   },
@@ -295,11 +295,11 @@
     "hardship_index": 6.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 148.1776388888889,
-      "Garbage Cart Maintenance": 690.1377777777777,
+      "Abandoned Vehicle Complaint": 144.6586111111111,
+      "Garbage Cart Maintenance": 688.1773611111112,
       "Graffiti Removal Request": 0.003611111111111111,
       "Pothole in Street Complaint": 118.25722222222223,
-      "Rodent Baiting/Rat Complaint": 71.22083333333333,
+      "Rodent Baiting/Rat Complaint": 72.515,
       "Tree Emergency": 19.794583333333335
     }
   },
@@ -308,11 +308,11 @@
     "hardship_index": 60.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 233.81722222222223,
-      "Garbage Cart Maintenance": 669.2180555555556,
-      "Graffiti Removal Request": 2.34,
-      "Pothole in Street Complaint": 600.4506944444445,
-      "Rodent Baiting/Rat Complaint": 133.92055555555555,
+      "Abandoned Vehicle Complaint": 233.5511111111111,
+      "Garbage Cart Maintenance": 669.2994444444445,
+      "Graffiti Removal Request": 2.3575,
+      "Pothole in Street Complaint": 600.4666666666667,
+      "Rodent Baiting/Rat Complaint": 136.02916666666667,
       "Tree Emergency": 22.081666666666667
     }
   },
@@ -321,12 +321,12 @@
     "hardship_index": 62.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 210.335,
-      "Garbage Cart Maintenance": 693.7638888888889,
+      "Abandoned Vehicle Complaint": 210.6173611111111,
+      "Garbage Cart Maintenance": 695.4029166666667,
       "Graffiti Removal Request": 2.632222222222222,
       "Pothole in Street Complaint": 481.0126388888889,
-      "Rodent Baiting/Rat Complaint": 141.5940277777778,
-      "Tree Emergency": 32.81916666666667
+      "Rodent Baiting/Rat Complaint": 142.22555555555556,
+      "Tree Emergency": 33.5275
     }
   },
   {
@@ -334,12 +334,12 @@
     "hardship_index": 64.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 377.5052777777778,
-      "Garbage Cart Maintenance": 766.7761111111112,
-      "Graffiti Removal Request": 15.586388888888889,
-      "Pothole in Street Complaint": 570.2752777777778,
-      "Rodent Baiting/Rat Complaint": 119.2925,
-      "Tree Emergency": 27.22736111111111
+      "Abandoned Vehicle Complaint": 377.0313888888889,
+      "Garbage Cart Maintenance": 788.2733333333333,
+      "Graffiti Removal Request": 15.635555555555555,
+      "Pothole in Street Complaint": 570.3163888888889,
+      "Rodent Baiting/Rat Complaint": 120.24972222222222,
+      "Tree Emergency": 27.184166666666666
     }
   },
   {
@@ -347,12 +347,12 @@
     "hardship_index": 66.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 322.04055555555556,
-      "Garbage Cart Maintenance": 830.6955555555555,
+      "Abandoned Vehicle Complaint": 322.6380555555555,
+      "Garbage Cart Maintenance": 835.4713888888889,
       "Graffiti Removal Request": 0.003611111111111111,
-      "Pothole in Street Complaint": 515.6752777777778,
-      "Rodent Baiting/Rat Complaint": 111.02305555555556,
-      "Tree Emergency": 23.826944444444443
+      "Pothole in Street Complaint": 514.6025,
+      "Rodent Baiting/Rat Complaint": 111.96041666666667,
+      "Tree Emergency": 23.966666666666665
     }
   },
   {
@@ -360,10 +360,10 @@
     "hardship_index": 68.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 398.43083333333334,
+      "Abandoned Vehicle Complaint": 402.69180555555556,
       "Garbage Cart Maintenance": 722.5913888888889,
-      "Graffiti Removal Request": 11.8075,
-      "Pothole in Street Complaint": 89.8,
+      "Graffiti Removal Request": 11.661944444444444,
+      "Pothole in Street Complaint": 89.78472222222223,
       "Rodent Baiting/Rat Complaint": 47.799166666666665,
       "Tree Emergency": 14.475833333333334
     }
@@ -374,10 +374,10 @@
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 235.81097222222223,
-      "Garbage Cart Maintenance": 788.1145833333333,
-      "Graffiti Removal Request": 15.200555555555555,
+      "Garbage Cart Maintenance": 788.4102777777778,
+      "Graffiti Removal Request": 15.185277777777777,
       "Pothole in Street Complaint": 482.28,
-      "Rodent Baiting/Rat Complaint": 113.81805555555556,
+      "Rodent Baiting/Rat Complaint": 116.56222222222222,
       "Tree Emergency": 24.684444444444445
     }
   },
@@ -386,11 +386,11 @@
     "hardship_index": 72.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 193.7266666666667,
-      "Garbage Cart Maintenance": 737.4172222222222,
-      "Graffiti Removal Request": 2.799166666666667,
-      "Pothole in Street Complaint": 421.81125,
-      "Rodent Baiting/Rat Complaint": 128.24666666666667,
+      "Abandoned Vehicle Complaint": 193.85111111111112,
+      "Garbage Cart Maintenance": 738.1566666666666,
+      "Graffiti Removal Request": 2.334722222222222,
+      "Pothole in Street Complaint": 421.8352777777778,
+      "Rodent Baiting/Rat Complaint": 131.6922222222222,
       "Tree Emergency": 22.942222222222224
     }
   },
@@ -399,11 +399,11 @@
     "hardship_index": 74.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 142.80416666666667,
-      "Garbage Cart Maintenance": 712.6725,
-      "Graffiti Removal Request": 0.5293055555555556,
-      "Pothole in Street Complaint": 787.0404166666667,
-      "Rodent Baiting/Rat Complaint": 85.77069444444444,
+      "Abandoned Vehicle Complaint": 142.13305555555556,
+      "Garbage Cart Maintenance": 712.9758333333333,
+      "Graffiti Removal Request": 0.6430555555555556,
+      "Pothole in Street Complaint": 791.6434722222223,
+      "Rodent Baiting/Rat Complaint": 84.9661111111111,
       "Tree Emergency": 24.985833333333332
     }
   },
@@ -412,12 +412,12 @@
     "hardship_index": 76.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 332.5125,
+      "Abandoned Vehicle Complaint": 332.65833333333336,
       "Aircraft Noise Complaint": 0.0002777777777777778,
-      "Garbage Cart Maintenance": 744.4547222222222,
+      "Garbage Cart Maintenance": 763.8719444444444,
       "Graffiti Removal Request": 1.6916666666666667,
-      "Pothole in Street Complaint": 508.93361111111113,
-      "Rodent Baiting/Rat Complaint": 135.75916666666666,
+      "Pothole in Street Complaint": 510.9684722222222,
+      "Rodent Baiting/Rat Complaint": 136.0738888888889,
       "Tree Emergency": 20.445416666666667
     }
   },
@@ -430,8 +430,8 @@
       "Aircraft Noise Complaint": 0.0,
       "Garbage Cart Maintenance": 807.3666666666667,
       "Graffiti Removal Request": 0.004166666666666667,
-      "Pothole in Street Complaint": 379.5683333333333,
-      "Rodent Baiting/Rat Complaint": 124.14319444444445,
+      "Pothole in Street Complaint": 381.2969444444444,
+      "Rodent Baiting/Rat Complaint": 131.62666666666667,
       "Tree Emergency": 21.256944444444443
     }
   },
@@ -440,10 +440,10 @@
     "hardship_index": 8.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 217.82166666666666,
+      "Abandoned Vehicle Complaint": 216.03472222222223,
       "Garbage Cart Maintenance": 619.7197222222222,
       "Graffiti Removal Request": 12.103055555555555,
-      "Pothole in Street Complaint": 163.59319444444446,
+      "Pothole in Street Complaint": 163.6052777777778,
       "Rodent Baiting/Rat Complaint": 72.76583333333333,
       "Tree Emergency": 28.82125
     }
@@ -453,11 +453,11 @@
     "hardship_index": 80.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 302.87361111111113,
+      "Abandoned Vehicle Complaint": 303.42347222222224,
       "Garbage Cart Maintenance": 867.6994444444445,
       "Graffiti Removal Request": 0.004722222222222222,
       "Pothole in Street Complaint": 161.48930555555557,
-      "Rodent Baiting/Rat Complaint": 116.28152777777777,
+      "Rodent Baiting/Rat Complaint": 116.93083333333334,
       "Tree Emergency": 24.14097222222222
     }
   },
@@ -466,12 +466,12 @@
     "hardship_index": 82.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 381.0775,
+      "Abandoned Vehicle Complaint": 381.6191666666667,
       "Aircraft Noise Complaint": 0.0,
-      "Garbage Cart Maintenance": 739.9783333333334,
+      "Garbage Cart Maintenance": 743.1497222222222,
       "Graffiti Removal Request": 15.141805555555555,
-      "Pothole in Street Complaint": 502.56027777777774,
-      "Rodent Baiting/Rat Complaint": 97.94874999999999,
+      "Pothole in Street Complaint": 502.56666666666666,
+      "Rodent Baiting/Rat Complaint": 98.90152777777777,
       "Tree Emergency": 26.311666666666667
     }
   },
@@ -482,8 +482,8 @@
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 77.34430555555555,
       "Garbage Cart Maintenance": 696.8230555555556,
-      "Graffiti Removal Request": 8.559166666666666,
-      "Pothole in Street Complaint": 68.60236111111112,
+      "Graffiti Removal Request": 8.513194444444444,
+      "Pothole in Street Complaint": 68.72111111111111,
       "Rodent Baiting/Rat Complaint": 55.33416666666666,
       "Tree Emergency": 22.000694444444445
     }
@@ -493,12 +493,12 @@
     "hardship_index": 86.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 493.3572222222222,
-      "Garbage Cart Maintenance": 767.695,
-      "Graffiti Removal Request": 18.244583333333335,
-      "Pothole in Street Complaint": 134.57416666666666,
-      "Rodent Baiting/Rat Complaint": 134.42333333333335,
-      "Tree Emergency": 24.461805555555557
+      "Abandoned Vehicle Complaint": 495.40972222222223,
+      "Garbage Cart Maintenance": 767.5022222222223,
+      "Graffiti Removal Request": 18.256666666666668,
+      "Pothole in Street Complaint": 134.81027777777777,
+      "Rodent Baiting/Rat Complaint": 134.43972222222223,
+      "Tree Emergency": 24.468611111111112
     }
   },
   {
@@ -508,9 +508,9 @@
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 506.7386111111111,
       "Garbage Cart Maintenance": 980.6833333333334,
-      "Graffiti Removal Request": 15.746805555555556,
-      "Pothole in Street Complaint": 230.8686111111111,
-      "Rodent Baiting/Rat Complaint": 168.00555555555556,
+      "Graffiti Removal Request": 15.830694444444443,
+      "Pothole in Street Complaint": 229.68652777777777,
+      "Rodent Baiting/Rat Complaint": 173.2938888888889,
       "Tree Emergency": 17.051111111111112
     }
   },
@@ -519,12 +519,12 @@
     "hardship_index": 90.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 375.4622222222222,
-      "Garbage Cart Maintenance": 780.7122222222222,
-      "Graffiti Removal Request": 14.599305555555556,
-      "Pothole in Street Complaint": 405.31916666666666,
-      "Rodent Baiting/Rat Complaint": 114.98916666666666,
-      "Tree Emergency": 23.104999999999997
+      "Abandoned Vehicle Complaint": 375.1488888888889,
+      "Garbage Cart Maintenance": 784.1452777777778,
+      "Graffiti Removal Request": 14.619166666666667,
+      "Pothole in Street Complaint": 411.77472222222224,
+      "Rodent Baiting/Rat Complaint": 115.63694444444444,
+      "Tree Emergency": 23.13722222222222
     }
   },
   {
@@ -533,10 +533,10 @@
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 618.493611111111,
-      "Garbage Cart Maintenance": 1099.2802777777779,
-      "Graffiti Removal Request": 3.9579166666666667,
+      "Garbage Cart Maintenance": 1099.4281944444444,
+      "Graffiti Removal Request": 4.969861111111111,
       "Pothole in Street Complaint": 190.70361111111112,
-      "Rodent Baiting/Rat Complaint": 92.75222222222223,
+      "Rodent Baiting/Rat Complaint": 92.86652777777778,
       "Tree Emergency": 23.580972222222222
     }
   },
@@ -545,12 +545,12 @@
     "hardship_index": 94.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 261.7388888888889,
-      "Garbage Cart Maintenance": 903.0443055555556,
-      "Graffiti Removal Request": 3.036111111111111,
-      "Pothole in Street Complaint": 139.0238888888889,
-      "Rodent Baiting/Rat Complaint": 144.68541666666664,
-      "Tree Emergency": 41.246944444444445
+      "Abandoned Vehicle Complaint": 262.29791666666665,
+      "Garbage Cart Maintenance": 911.8516666666667,
+      "Graffiti Removal Request": 3.1390277777777778,
+      "Pothole in Street Complaint": 139.01749999999998,
+      "Rodent Baiting/Rat Complaint": 146.29,
+      "Tree Emergency": 41.31388888888889
     }
   },
   {
@@ -558,12 +558,12 @@
     "hardship_index": 96.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 453.68861111111113,
-      "Garbage Cart Maintenance": 689.0284722222223,
-      "Graffiti Removal Request": 16.016666666666666,
+      "Abandoned Vehicle Complaint": 444.3513888888889,
+      "Garbage Cart Maintenance": 694.2819444444444,
+      "Graffiti Removal Request": 16.028055555555557,
       "Pothole in Street Complaint": 162.83138888888888,
-      "Rodent Baiting/Rat Complaint": 99.50777777777778,
-      "Tree Emergency": 19.477777777777778
+      "Rodent Baiting/Rat Complaint": 99.74388888888889,
+      "Tree Emergency": 19.41722222222222
     }
   },
   {
@@ -571,11 +571,11 @@
     "hardship_index": 98.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 330.08625,
+      "Abandoned Vehicle Complaint": 331.37041666666664,
       "Garbage Cart Maintenance": 1002.5686111111111,
-      "Graffiti Removal Request": 13.890138888888888,
+      "Graffiti Removal Request": 13.132638888888888,
       "Pothole in Street Complaint": 213.82847222222222,
-      "Rodent Baiting/Rat Complaint": 118.61486111111111,
+      "Rodent Baiting/Rat Complaint": 120.06666666666666,
       "Tree Emergency": 26.296944444444442
     }
   },
@@ -584,12 +584,12 @@
     "hardship_index": 10.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 166.4636111111111,
-      "Garbage Cart Maintenance": 828.1005555555555,
+      "Abandoned Vehicle Complaint": 164.69194444444443,
+      "Garbage Cart Maintenance": 834.0880555555555,
       "Graffiti Removal Request": 0.004166666666666667,
-      "Pothole in Street Complaint": 199.27694444444444,
+      "Pothole in Street Complaint": 239.96138888888888,
       "Rodent Baiting/Rat Complaint": 136.67694444444444,
-      "Tree Emergency": 43.760555555555555
+      "Tree Emergency": 43.84291666666667
     }
   },
   {
@@ -597,11 +597,11 @@
     "hardship_index": 0.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 331.3833333333333,
-      "Garbage Cart Maintenance": 825.2669444444444,
-      "Graffiti Removal Request": 0.004583333333333333,
-      "Pothole in Street Complaint": 169.06916666666666,
-      "Rodent Baiting/Rat Complaint": 92.20236111111112,
+      "Abandoned Vehicle Complaint": 331.71805555555557,
+      "Garbage Cart Maintenance": 829.5388888888889,
+      "Graffiti Removal Request": 0.004722222222222222,
+      "Pothole in Street Complaint": 169.0651388888889,
+      "Rodent Baiting/Rat Complaint": 93.20361111111112,
       "Tree Emergency": 29.05125
     }
   },
@@ -612,10 +612,10 @@
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 364.3331944444444,
       "Aircraft Noise Complaint": 0.0,
-      "Garbage Cart Maintenance": 649.4652777777778,
+      "Garbage Cart Maintenance": 665.4147222222222,
       "Graffiti Removal Request": 0.0033333333333333335,
-      "Pothole in Street Complaint": 74.58152777777778,
-      "Rodent Baiting/Rat Complaint": 93.55833333333334,
+      "Pothole in Street Complaint": 74.52833333333334,
+      "Rodent Baiting/Rat Complaint": 93.7238888888889,
       "Tree Emergency": 47.96125
     }
   },
@@ -624,12 +624,12 @@
     "hardship_index": 14.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 281.62833333333333,
-      "Garbage Cart Maintenance": 691.6825,
-      "Graffiti Removal Request": 14.43763888888889,
+      "Abandoned Vehicle Complaint": 283.74111111111114,
+      "Garbage Cart Maintenance": 694.57,
+      "Graffiti Removal Request": 14.799722222222222,
       "Pothole in Street Complaint": 65.68527777777778,
-      "Rodent Baiting/Rat Complaint": 74.41361111111111,
-      "Tree Emergency": 25.904722222222222
+      "Rodent Baiting/Rat Complaint": 74.705,
+      "Tree Emergency": 25.915694444444444
     }
   },
   {
@@ -638,11 +638,11 @@
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
       "Abandoned Vehicle Complaint": 171.11944444444444,
-      "Garbage Cart Maintenance": 698.4511111111111,
-      "Graffiti Removal Request": 11.467222222222222,
+      "Garbage Cart Maintenance": 714.1454166666667,
+      "Graffiti Removal Request": 10.801944444444445,
       "Pothole in Street Complaint": 61.70305555555556,
       "Rodent Baiting/Rat Complaint": 97.63666666666667,
-      "Tree Emergency": 35.39097222222222
+      "Tree Emergency": 35.2375
     }
   },
   {
@@ -650,12 +650,12 @@
     "hardship_index": 18.0,
     "services": {
       "311 INFORMATION ONLY CALL": 0.0,
-      "Abandoned Vehicle Complaint": 277.9643055555556,
-      "Garbage Cart Maintenance": 715.6458333333333,
-      "Graffiti Removal Request": 18.8525,
-      "Pothole in Street Complaint": 91.25861111111111,
-      "Rodent Baiting/Rat Complaint": 99.53944444444444,
-      "Tree Emergency": 29.628888888888888
+      "Abandoned Vehicle Complaint": 280.24333333333334,
+      "Garbage Cart Maintenance": 717.2213888888889,
+      "Graffiti Removal Request": 18.594583333333333,
+      "Pothole in Street Complaint": 91.42833333333334,
+      "Rodent Baiting/Rat Complaint": 103.1223611111111,
+      "Tree Emergency": 29.685
     }
   }
 ]
